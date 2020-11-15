@@ -48,7 +48,7 @@ class TagProducto(models.Model):
 
 class Imagenes(models.Model):
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    imagen = models.ImageField()
+    imagen = models.ImageField(upload_to = 'images')
 
 class Talla(models.Model):
     tamanio = models.CharField(max_length=15)
