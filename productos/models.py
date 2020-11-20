@@ -67,6 +67,9 @@ class Empresa(models.Model):
     correo = models.CharField(max_length=30)
     ruc = models.CharField(max_length=10)
 
+    def __str__(self):
+        return self.nombre
+
 class EmpresaProducto(models.Model):
     idEmpresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
@@ -80,6 +83,21 @@ class Cupon(models.Model):
     minimoAplicable = models.DecimalField(max_digits=16, decimal_places=2)
     codigo = models.CharField(max_length=50)
 
+class Login(models.Model):
+    username = models.CharField(max_length=25)
+    clave = models.CharField(max_length=100)
+
+
+class Cliente(models.Model):
+    nombres = models.CharField(max_length=70)
+    apellidos = models.CharField(max_length=70)
+    telefono = models.CharField(max_length=15)
+    correo = models.EmailField()
+    activo = models.BooleanField()
+    direccion = models.CharField(max_length=200)
+    idLogin = models.ForeignKey(Login, on_delete= models.CASCADE)
+    def __str__(self):
+        return self.correo
 
 ORDER_CHOICES ={
     ('Carrito','CARRITO'),
@@ -95,7 +113,9 @@ class Orden(models.Model):
     total = models.DecimalField(max_digits=16, decimal_places=2)
     fecha_ingreso = models.DateTimeField()
     fecha_entrega = models.DateTimeField()
-    idcupon = models.ForeignKey(Cupon, null=True,on_delete = models.CASCADE)
+    idcupon = models.ForeignKey(Cupon, null=True,on_delete = models.DO_NOTHING)
+    idCliente = models.ForeignKey(Cliente,on_delete = models.CASCADE, default=1 )
+  
 
 class Producto_Orden(models.Model):
     idOrden = models.ForeignKey(Producto, on_delete= models.CASCADE)

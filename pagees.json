@@ -1,0 +1,35 @@
+[
+{
+    "model": "productos.producto",
+    "pk": 1,
+    "fields": {
+        "nombre": "Camisa Barcelona",
+        "codigoProducto": "11001",
+        "descripcion": "camisa real madrid dasd",
+        "activo": true,
+        "tipoMaterial": "Algodon",
+        "exento": true,
+        "marca": 1,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 2,
+    "fields": {
+        "nombre": "Camisa Real Madrid",
+        "codigoProducto": "11001",
+        "descripcion": "camisa real madrid dasd",
+        "activo": true,
+        "tipoMaterial": "Algodon",
+        "exento": true,
+        "marca": 1,
+        "subcategorias": [
+            1
+        ]
+    }
+}
+
+]

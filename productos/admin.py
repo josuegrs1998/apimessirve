@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Categoria,Orden, Producto_Orden, Cupon,Subcategoria,EmpresaProducto, Marca, Producto, Tags, TagProducto, Imagenes, Talla, TallaProducto, Empresa
+from .models import Categoria,Orden, Cliente, Producto_Orden, Cupon,Subcategoria,EmpresaProducto, Marca, Producto, Tags, TagProducto, Imagenes, Talla, TallaProducto, Empresa, Login
 
 
 admin.site.register(Categoria)
@@ -17,3 +17,5 @@ admin.site.register(EmpresaProducto)
 admin.site.register(Cupon)
 admin.site.register(Orden)
 admin.site.register(Producto_Orden)
+admin.site.register(Login)
+admin.site.register(Cliente)
