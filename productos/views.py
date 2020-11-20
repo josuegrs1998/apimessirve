@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .models import (Categoria, Cupon, EmpresaProducto, Empresa, Orden  ,
-Subcategoria, Marca, Producto, TagProducto, Tags, Imagenes, TallaProducto, Talla, Producto_Orden)
+Subcategoria, Marca, Producto, TagProducto, Tags, Imagenes, TallaProducto, Talla, Producto_Orden, Login, Cliente)
 from .serializers import (CategoriaSerializer, SubcategoriaSerializer, MarcaSerializer, SubcategoriaProductoSerializer,
 ProductoSerializer, TallaSerializer, TallaProductoSerializer, TagProductoSerializer, TagSerializer,EmpresaSerializer 
-, ImagenesSerializer, EmpresaProductoSerializer, CuponSerializer, OrdenSerializer, Producto_OrdenSerializer)
+, ImagenesSerializer, EmpresaProductoSerializer, CuponSerializer, OrdenSerializer, Producto_OrdenSerializer, LoginSerializer, ClienteSerializer)
 from rest_framework import permissions
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -318,7 +318,7 @@ class ListaOrden(ListCreateAPIView):
         return Orden.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'estado', 'no_Orden')
+    filter_fields = ('id', 'estado', 'no_Orden', 'idCliente')
 
 class DetalleOrden(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = OrdenSerializer
@@ -345,3 +345,42 @@ class DetalleProducto_Orden(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar
 
     def get_queryset(self):
         return Producto_Orden.objects.all()
+
+#------------------------------------------LOGIN---------------------------------------------#
+class ListaLogin(ListCreateAPIView):
+    serializer_class = LoginSerializer
+    def perform_create(self, serializer):
+        serializer.save()
+
+    def get_queryset(self):
+        return Login.objects.all()
+    
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('id', 'username')
+
+class DetalleLogin(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
+    serializer_class = LoginSerializer
+    lookup_field='id'
+
+    def get_queryset(self):
+        return Login.objects.all()
+
+
+#------------------------------------------Cliente---------------------------------------------#
+class ListaCliente(ListCreateAPIView):
+    serializer_class = ClienteSerializer
+    def perform_create(self, serializer):
+        serializer.save()
+
+    def get_queryset(self):
+        return Cliente.objects.all()
+    
+    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_fields = ('id', 'nombres', 'apellidos', 'correo', 'activo')
+
+class DetalleCliente(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
+    serializer_class = ClienteSerializer
+    lookup_field='id'
+
+    def get_queryset(self):
+        return Cliente.objects.all()

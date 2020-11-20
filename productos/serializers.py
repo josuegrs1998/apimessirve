@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer
 from .models import (Categoria,Subcategoria, Marca, Producto, Tags, TagProducto, 
-Imagenes, Talla, TallaProducto, Empresa, EmpresaProducto, Cupon, Orden, Producto_Orden)
+Imagenes, Talla, TallaProducto, Empresa, EmpresaProducto, Cupon, Orden, Producto_Orden, Login, Cliente)
 
 class CategoriaSerializer(ModelSerializer):
 
@@ -86,10 +86,22 @@ class OrdenSerializer(ModelSerializer):
 
     class Meta:
         model = Orden
-        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon']
+        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon', 'IdCliente']
 
 class Producto_OrdenSerializer(ModelSerializer):
 
     class Meta:
         model = Producto_Orden
         fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total']
+    
+class LoginSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Login
+        fields = ['id', 'username', 'clave']
+
+class ClienteSerializer(ModelSerializer):
+
+    class Meta:
+        model = Cliente
+        fields = ['id', 'nombres', 'apellidos', 'telefono', 'correo', 'activo', 'direccion', 'idLogin']

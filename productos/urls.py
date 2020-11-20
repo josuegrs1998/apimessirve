@@ -4,7 +4,7 @@ DetalleImagenes, ListaTalla, DetalleTalla, ListaTallaProducto, DetalleTallaProdu
 DetalleSubcategoria,ListaMarca, DetalleMarca, ListaProducto, ListaTag, DetalleTag,
 ListaTagProductos, DetalleTagProductos, DetalleProducto, ListaSubProducto, ListaEmpresa, DetalleEmpresa, 
 ListaEmpresaProducto, DetalleEmpresaProducto, ListaCupon, DetalleCupon, ListaOrden, DetalleOrden, ListaProducto_Orden
-, DetalleProducto_Orden)
+, DetalleProducto_Orden, ListaLogin, DetalleLogin, ListaCliente, DetalleCliente)
 
 
 urlpatterns =[
@@ -37,6 +37,10 @@ urlpatterns =[
     path('orden', ListaOrden.as_view()),
     path('orden/<int:id>', DetalleOrden.as_view()),
     path('productoorden', ListaProducto_Orden.as_view()),
-    path('productoorden/<int:id>', DetalleProducto_Orden.as_view())
+    path('productoorden/<int:id>', DetalleProducto_Orden.as_view()),
+    path('login', ListaLogin.as_view()),
+    path('login/<int:id>', DetalleLogin.as_view()),
+    path('cliente', ListaCliente.as_view()),
+    path('cliente/<int:id>', DetalleCliente.as_view())
 
 ]
