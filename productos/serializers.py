@@ -21,9 +21,16 @@ class MarcaSerializer(ModelSerializer):
         model = Marca
         fields =['id','nombre', 'descripcion']
 
+class ImagenesSerializer(ModelSerializer):
+
+    class Meta: 
+        model = Imagenes
+        fields = ['id', 'idProducto', 'imagen']
+
 class ProductoSerializer(ModelSerializer):
     subcategorias = SubcategoriaSerializer(many=True)
     marca = MarcaSerializer()
+    imagenes_set = ImagenesSerializer(many=True)
     class Meta:
         model = Producto
         fields = '__all__'
@@ -45,12 +52,6 @@ class TagProductoSerializer(ModelSerializer):
     class Meta:
         model = TagProducto
         fields =['id', 'idTag', 'idProducto']
-
-class ImagenesSerializer(ModelSerializer):
-
-    class Meta: 
-        model = Imagenes
-        fields = ['id', 'idProducto', 'imagen']
 
 class TallaSerializer(ModelSerializer):
 
