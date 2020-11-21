@@ -41,8 +41,11 @@ INSTALLED_APPS = [
     'django_filters',
     'corsheaders',
     'autenticacion',
-    'productos'
+    'productos',
+    'user',
 ]
+
+AUTH_USER_MODEL = 'user.CustomUser'
 
 REST_FRAMEWORK ={
     'DEFULT_AUTHENTICATION_CLASSES':(
