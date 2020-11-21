@@ -62,7 +62,7 @@ class TallaProductoSerializer(ModelSerializer):
 
     class Meta:
         model = TallaProducto
-        fields = ['id', 'idtalla', 'idProducto', 'cantidad']
+        fields = ['id', 'idtalla', 'idProducto', 'cantidad', 'idEmpresa']
 
 class EmpresaSerializer(ModelSerializer):
 

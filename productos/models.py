@@ -55,10 +55,6 @@ class Talla(models.Model):
     def __str__(self):
         return self.tamanio
 
-class TallaProducto(models.Model):
-    idtalla = models.ForeignKey(Talla, on_delete=models.CASCADE )
-    idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
-    cantidad = models.IntegerField()
 
 class Empresa(models.Model):
     nombre = models.CharField(max_length=60)
@@ -69,12 +65,19 @@ class Empresa(models.Model):
 
     def __str__(self):
         return self.nombre
+class TallaProducto(models.Model):
+    idtalla = models.ForeignKey(Talla, on_delete=models.CASCADE )
+    idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
+    idEmpresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, default=1)
+    cantidad = models.IntegerField()
+
+
 
 class EmpresaProducto(models.Model):
     idEmpresa = models.ForeignKey(Empresa, on_delete=models.CASCADE)
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     cantidad = models.IntegerField()
-    descuento = models.DecimalField(max_digits=16, decimal_places=2)
+    descuento = models.DecimalField(max_digits=16, decimal_places=2, default = 0)
     precioBase = models.DecimalField(max_digits=16, decimal_places=2)
 
 class Cupon(models.Model):
@@ -86,7 +89,6 @@ class Cupon(models.Model):
 class Login(models.Model):
     username = models.CharField(max_length=25)
     clave = models.CharField(max_length=100)
-
 
 class Cliente(models.Model):
     nombres = models.CharField(max_length=70)
@@ -102,6 +104,7 @@ class Cliente(models.Model):
 ORDER_CHOICES ={
     ('Carrito','CARRITO'),
     ('Orden Abierta', 'ORDEN ABIERTA'),
+    ('En Proceso', 'EN PROCESO'),
     ('Orden Cerrada','ORDEN CERRADA')
 }
 class Orden(models.Model):
