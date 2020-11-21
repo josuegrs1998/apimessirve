@@ -65,12 +65,15 @@ class Empresa(models.Model):
 
     def __str__(self):
         return self.nombre
+
 class TallaProducto(models.Model):
     idtalla = models.ForeignKey(Talla, on_delete=models.CASCADE )
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
     idEmpresa = models.ForeignKey(Empresa, on_delete=models.CASCADE, default=1)
     cantidad = models.IntegerField()
 
+    class Meta:
+        unique_together = ('idEmpresa', 'idProducto', 'idtalla')
 
 
 class EmpresaProducto(models.Model):
@@ -79,6 +82,9 @@ class EmpresaProducto(models.Model):
     cantidad = models.IntegerField()
     descuento = models.DecimalField(max_digits=16, decimal_places=2, default = 0)
     precioBase = models.DecimalField(max_digits=16, decimal_places=2)
+
+    class Meta:
+        unique_together = ('idEmpresa', 'idProducto')
 
 class Cupon(models.Model):
     activo = models.BooleanField()
