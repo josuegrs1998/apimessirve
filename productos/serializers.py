@@ -21,9 +21,42 @@ class MarcaSerializer(ModelSerializer):
         model = Marca
         fields =['id','nombre', 'descripcion']
 
+class ImagenesSerializer(ModelSerializer):
+
+    class Meta: 
+        model = Imagenes
+        fields = ['id', 'idProducto', 'imagen']
+
+class TallaSerializer(ModelSerializer):
+
+    class Meta:
+        model = Talla
+        fields = ['id', 'tamanio']
+
+class TallaProductoSerializer(ModelSerializer):
+    idtalla = TallaSerializer()
+    class Meta:
+        model = TallaProducto
+        fields = ['id', 'idtalla', 'idProducto', 'cantidad', 'idEmpresa']
+
+class EmpresaSerializer(ModelSerializer):
+
+    class Meta:
+        model = Empresa
+        fields = ['id', 'nombre', 'descripcion', 'telefono', 'correo', 'ruc']
+
+class EmpresaProductoSerializer(ModelSerializer):
+    idEmpresa = EmpresaSerializer()
+    class Meta:
+        model = EmpresaProducto
+        fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
+
 class ProductoSerializer(ModelSerializer):
     subcategorias = SubcategoriaSerializer(many=True)
     marca = MarcaSerializer()
+    imagenes_set = ImagenesSerializer(many=True)
+    tallaproducto_set = TallaProductoSerializer(many=True)
+    empresaproducto_set = EmpresaProductoSerializer(many=True)
     class Meta:
         model = Producto
         fields = '__all__'
@@ -45,36 +78,6 @@ class TagProductoSerializer(ModelSerializer):
     class Meta:
         model = TagProducto
         fields =['id', 'idTag', 'idProducto']
-
-class ImagenesSerializer(ModelSerializer):
-
-    class Meta: 
-        model = Imagenes
-        fields = ['id', 'idProducto', 'imagen']
-
-class TallaSerializer(ModelSerializer):
-
-    class Meta:
-        model = Talla
-        fields = ['id', 'tamanio']
-
-class TallaProductoSerializer(ModelSerializer):
-
-    class Meta:
-        model = TallaProducto
-        fields = ['id', 'idtalla', 'idProducto', 'cantidad', 'idEmpresa']
-
-class EmpresaSerializer(ModelSerializer):
-
-    class Meta:
-        model = Empresa
-        fields = ['id', 'nombre', 'descripcion', 'telefono', 'correo', 'ruc']
-
-class EmpresaProductoSerializer(ModelSerializer):
-
-    class Meta:
-        model = EmpresaProducto
-        fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
 
 class CuponSerializer(ModelSerializer):
 
