@@ -30,7 +30,7 @@ class ListaUsuario(ListCreateAPIView):
         return User.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'username', 'first_name', 'email')
+    filter_fields = ('id', 'first_name', 'email')
 
 class RegisterView(GenericAPIView):
     serializer_class = LoginSerializer
@@ -46,12 +46,17 @@ class RegisterView(GenericAPIView):
 class LoginView(GenericAPIView):
     def post(self, request):
         data = request.data
-        username = data.get('username', '')
+        email = data.get('email', '')
         password = data.get('password', '')
-        user = auth.authenticate(username=username, password=password)
+        user = auth.authenticate(email=email, password=password)
 
         if user:
-            auth_token= jwt.encode({'username':user.username}, settings.JWT_SECRET_KEY)
+            auth_token= jwt.encode({
+                'email':user.email,
+                'direccion':user.direccion,
+                'telefono':user.telefono,
+                'first_name':user.first_name
+            }, settings.JWT_SECRET_KEY)
 
             serializer = LoginSerializer(user)
 
