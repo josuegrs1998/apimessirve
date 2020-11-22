@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
+from productos.serializers import OrdenSerializer
 
 User = get_user_model()
 
@@ -17,9 +18,10 @@ class UserSerializer(serializers.ModelSerializer):
     #    return user
 
 class LoginSerializer(serializers.ModelSerializer):
+    orden_set = OrdenSerializer(many=True)
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'password']
+        fields = ['email', 'first_name', 'password', 'orden_set']
         extra_kwargs = {'password': {'write_only': True}}
     
     def validate(self, attrs):

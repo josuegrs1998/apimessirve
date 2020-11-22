@@ -1,4 +1,7 @@
 from django.db import models
+from user.models import CustomUser
+from django.utils.timezone import now
+import uuid
 
 class Categoria(models.Model):
     nombre = models.CharField(max_length=60)
@@ -115,15 +118,15 @@ ORDER_CHOICES ={
 }
 class Orden(models.Model):
     estado = models.CharField(max_length=25, choices=ORDER_CHOICES, default='Carrito')
-    no_Orden = models.CharField(max_length = 10)
+    no_Orden = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     impuesto = models.DecimalField(max_digits=16, decimal_places=2)
-    envio = models.DecimalField(max_digits=16, decimal_places=2)
+    envio = models.DecimalField(null=True, max_digits=16, decimal_places=2)
     subtotal = models.DecimalField(max_digits=16, decimal_places=2)
     total = models.DecimalField(max_digits=16, decimal_places=2)
-    fecha_ingreso = models.DateTimeField()
-    fecha_entrega = models.DateTimeField()
+    fecha_ingreso = models.DateTimeField(default=now)
+    fecha_entrega = models.DateTimeField(null=True)
     idcupon = models.ForeignKey(Cupon, null=True,on_delete = models.DO_NOTHING)
-    idCliente = models.ForeignKey(Cliente,on_delete = models.CASCADE, default=1 )
+    idUsuario = models.ForeignKey(CustomUser,on_delete = models.CASCADE, default=1 )
   
 
 class Producto_Orden(models.Model):

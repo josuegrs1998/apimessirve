@@ -89,7 +89,7 @@ class OrdenSerializer(ModelSerializer):
 
     class Meta:
         model = Orden
-        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon', 'IdCliente']
+        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon', 'idUsuario']
 
 class Producto_OrdenSerializer(ModelSerializer):
 
