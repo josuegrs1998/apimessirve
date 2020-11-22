@@ -55,7 +55,8 @@ class LoginView(GenericAPIView):
                 'email':user.email,
                 'direccion':user.direccion,
                 'telefono':user.telefono,
-                'first_name':user.first_name
+                'first_name':user.first_name,
+                'last_name': user.last_name
             }, settings.JWT_SECRET_KEY)
 
             serializer = LoginSerializer(user)

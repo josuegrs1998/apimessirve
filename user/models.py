@@ -11,8 +11,8 @@ class CustomUser(AbstractUser):
     email = models.EmailField(_('email address'), unique=True, error_messages={
         'unique': "User with this email address already exists!"
     })
-    telefono = models.CharField(max_length=20)
-    direccion = models.TextField(null=True)
+    telefono = models.CharField(null=True, max_length=20)
+    direccion = models.JSONField(null=True)
     #activate = models.JSONField(null=True)
     #reset_expiration = models.DateTimeField(null=True)
 #    is_active = models.BooleanField(
