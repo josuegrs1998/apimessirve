@@ -34,7 +34,7 @@ class ListaUsuario(ListCreateAPIView):
 
 class DetalleUsuario(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = UserSerializer
-    lookup_field='email'
+    lookup_field='id'
 
     def get_queryset(self):
         return User.objects.all()
@@ -59,6 +59,7 @@ class LoginView(GenericAPIView):
 
         if user:
             auth_token= jwt.encode({
+                'id':user.id,
                 'email':user.email,
                 'direccion':user.direccion,
                 'telefono':user.telefono,
