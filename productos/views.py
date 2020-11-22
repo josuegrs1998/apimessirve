@@ -356,7 +356,7 @@ class ListaLogin(ListCreateAPIView):
         return Login.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'username')
+    filter_fields = ('id', 'email')
 
 class DetalleLogin(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = LoginSerializer
@@ -364,7 +364,6 @@ class DetalleLogin(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
 
     def get_queryset(self):
         return Login.objects.all()
-
 
 #------------------------------------------Cliente---------------------------------------------#
 class ListaCliente(ListCreateAPIView):
@@ -376,7 +375,7 @@ class ListaCliente(ListCreateAPIView):
         return Cliente.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'nombres', 'apellidos', 'correo', 'activo')
+    filter_fields = ('id', 'nombres', 'apellidos', 'email', 'activo')
 
 class DetalleCliente(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = ClienteSerializer

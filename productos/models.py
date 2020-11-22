@@ -93,16 +93,16 @@ class Cupon(models.Model):
     codigo = models.CharField(max_length=50)
 
 class Login(models.Model):
-    username = models.CharField(max_length=25)
+    email = models.EmailField(default="")
     clave = models.CharField(max_length=100)
 
 class Cliente(models.Model):
     nombres = models.CharField(max_length=70)
     apellidos = models.CharField(max_length=70)
-    telefono = models.CharField(max_length=15)
-    correo = models.EmailField()
-    activo = models.BooleanField()
-    direccion = models.CharField(max_length=200)
+    telefono = models.CharField(null=True, max_length=15)
+    email = models.EmailField()
+    activo = models.BooleanField(default=True)
+    direccion = models.JSONField(null=True)
     idLogin = models.ForeignKey(Login, on_delete= models.CASCADE)
     def __str__(self):
         return self.correo

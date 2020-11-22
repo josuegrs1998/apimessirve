@@ -101,10 +101,10 @@ class LoginSerializer(ModelSerializer):
     
     class Meta:
         model = Login
-        fields = ['id', 'username', 'clave']
+        fields = ['id', 'email', 'clave']
 
 class ClienteSerializer(ModelSerializer):
 
     class Meta:
         model = Cliente
-        fields = ['id', 'nombres', 'apellidos', 'telefono', 'correo', 'activo', 'direccion', 'idLogin']
+        fields = ['id', 'nombres', 'apellidos', 'telefono', 'email', 'activo', 'direccion', 'idLogin']
