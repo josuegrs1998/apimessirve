@@ -9,7 +9,7 @@ from .managers import CustomUserManager
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True, error_messages={
-        'unique': "User with this email address already exists!"
+        'unique': "Cuenta con esta direccion de E-Mail ya existe!"
     })
     telefono = models.CharField(null=True, max_length=20)
     direccion = models.JSONField(null=True)
