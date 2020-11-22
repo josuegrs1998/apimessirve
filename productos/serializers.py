@@ -51,12 +51,25 @@ class EmpresaProductoSerializer(ModelSerializer):
         model = EmpresaProducto
         fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
 
+class OrdenSerializer(ModelSerializer):
+
+    class Meta:
+        model = Orden
+        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon', 'idUsuario']
+
+class Producto_OrdenSerializer(ModelSerializer):
+
+    class Meta:
+        model = Producto_Orden
+        fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total']
+
 class ProductoSerializer(ModelSerializer):
     subcategorias = SubcategoriaSerializer(many=True)
     marca = MarcaSerializer()
     imagenes_set = ImagenesSerializer(many=True)
     tallaproducto_set = TallaProductoSerializer(many=True)
     empresaproducto_set = EmpresaProductoSerializer(many=True)
+    producto_orden_set = Producto_OrdenSerializer(many=True)
     class Meta:
         model = Producto
         fields = '__all__'
@@ -84,18 +97,6 @@ class CuponSerializer(ModelSerializer):
     class Meta:
         model = Cupon
         fields = ['id', 'activo', 'cantidad', 'minimoAplicable', 'codigo']
-
-class OrdenSerializer(ModelSerializer):
-
-    class Meta:
-        model = Orden
-        fields = ['id', 'estado', 'no_Orden', 'impuesto', 'envio', 'subtotal', 'total', 'fecha_ingreso', 'fecha_entrega', 'idcupon', 'idUsuario']
-
-class Producto_OrdenSerializer(ModelSerializer):
-
-    class Meta:
-        model = Producto_Orden
-        fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total']
     
 class LoginSerializer(ModelSerializer):
     

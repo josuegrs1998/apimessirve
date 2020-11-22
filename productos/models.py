@@ -130,8 +130,8 @@ class Orden(models.Model):
   
 
 class Producto_Orden(models.Model):
-    idOrden = models.ForeignKey(Producto, on_delete= models.CASCADE)
-    idProducto = models.ForeignKey(Orden, on_delete = models.CASCADE)
+    idOrden = models.ForeignKey(Orden, on_delete= models.CASCADE)
+    idProducto = models.ForeignKey(Producto, on_delete = models.CASCADE)
     precio = models.DecimalField(max_digits=16, decimal_places=2)
     cantidad = models.IntegerField()
     iva = models.DecimalField(max_digits=16, decimal_places=2)
