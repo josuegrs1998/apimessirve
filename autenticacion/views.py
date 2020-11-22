@@ -32,6 +32,13 @@ class ListaUsuario(ListCreateAPIView):
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('id', 'first_name', 'email')
 
+class DetalleUsuario(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
+    serializer_class = UserSerializer
+    lookup_field='email'
+
+    def get_queryset(self):
+        return User.objects.all()
+
 class RegisterView(GenericAPIView):
     serializer_class = LoginSerializer
 
