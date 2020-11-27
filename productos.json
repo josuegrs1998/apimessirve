@@ -1,0 +1,162 @@
+[
+{
+    "model": "productos.producto",
+    "pk": 1,
+    "fields": {
+        "nombre": "Camisa Real Madrid",
+        "codigoProducto": "11001",
+        "descripcion": "asdsadsadad",
+        "activo": true,
+        "tipoMaterial": "Algodon",
+        "exento": true,
+        "marca": 1,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 2,
+    "fields": {
+        "nombre": "G Fuel de Fresa",
+        "codigoProducto": "0202020202",
+        "descripcion": "Bebida G Fuel",
+        "activo": true,
+        "tipoMaterial": "Polvo",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 3,
+    "fields": {
+        "nombre": "Balón de Futbol",
+        "codigoProducto": "02020",
+        "descripcion": "asdasd",
+        "activo": true,
+        "tipoMaterial": "Cuero",
+        "exento": true,
+        "marca": 1,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 4,
+    "fields": {
+        "nombre": "Balón de Basket",
+        "codigoProducto": "84848484",
+        "descripcion": "asdsad",
+        "activo": true,
+        "tipoMaterial": "Cuero",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            3
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 5,
+    "fields": {
+        "nombre": "Short Real Madrid",
+        "codigoProducto": "02202020",
+        "descripcion": "sadas",
+        "activo": true,
+        "tipoMaterial": "Algodon",
+        "exento": true,
+        "marca": 1,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 6,
+    "fields": {
+        "nombre": "Short Barcelona",
+        "codigoProducto": "8484848",
+        "descripcion": "asdadads",
+        "activo": true,
+        "tipoMaterial": "Algodon",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            1
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 7,
+    "fields": {
+        "nombre": "Camisa de Lakers",
+        "codigoProducto": "84848",
+        "descripcion": "asdsad",
+        "activo": true,
+        "tipoMaterial": "Tela",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            3
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 8,
+    "fields": {
+        "nombre": "Zapatos Jordan  - Blancos",
+        "codigoProducto": "51515",
+        "descripcion": "asdsad",
+        "activo": true,
+        "tipoMaterial": "Cuero",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            3
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 9,
+    "fields": {
+        "nombre": "Zapatos Jordan  - Negros",
+        "codigoProducto": "1515515",
+        "descripcion": "Aadqwqwdqwdqwd",
+        "activo": true,
+        "tipoMaterial": "Cuero",
+        "exento": true,
+        "marca": 2,
+        "subcategorias": [
+            3
+        ]
+    }
+},
+{
+    "model": "productos.producto",
+    "pk": 10,
+    "fields": {
+        "nombre": "My Protein",
+        "codigoProducto": "84848",
+        "descripcion": "Polvo con poderes",
+        "activo": true,
+        "tipoMaterial": "Droga legal",
+        "exento": true,
+        "marca": 3,
+        "subcategorias": [
+            2
+        ]
+    }
+}
+]
