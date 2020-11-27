@@ -1,0 +1,29 @@
+[
+{
+    "model": "productos.subcategoria",
+    "pk": 1,
+    "fields": {
+        "nombre": "Futbol",
+        "descripcion": "sdfdsf",
+        "idCategoria": 1
+    }
+},
+{
+    "model": "productos.subcategoria",
+    "pk": 2,
+    "fields": {
+        "nombre": "Bebidas",
+        "descripcion": "asdasda",
+        "idCategoria": 2
+    }
+},
+{
+    "model": "productos.subcategoria",
+    "pk": 3,
+    "fields": {
+        "nombre": "Basketball",
+        "descripcion": "asdas",
+        "idCategoria": 1
+    }
+}
+]

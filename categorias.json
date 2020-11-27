@@ -1,0 +1,18 @@
+[
+{
+    "model": "productos.categoria",
+    "pk": 1,
+    "fields": {
+        "nombre": "Deportes",
+        "descripcion": "asdasdasd"
+    }
+},
+{
+    "model": "productos.categoria",
+    "pk": 2,
+    "fields": {
+        "nombre": "Energizantes",
+        "descripcion": "Te ponen a tope"
+    }
+}
+]

@@ -1,0 +1,26 @@
+[
+{
+    "model": "productos.marca",
+    "pk": 1,
+    "fields": {
+        "nombre": "Adidas",
+        "descripcion": "sdfsdf"
+    }
+},
+{
+    "model": "productos.marca",
+    "pk": 2,
+    "fields": {
+        "nombre": "Nike",
+        "descripcion": "Soy marca Nike"
+    }
+},
+{
+    "model": "productos.marca",
+    "pk": 3,
+    "fields": {
+        "nombre": "G Fuel",
+        "descripcion": "sadasd"
+    }
+}
+]
