@@ -1,0 +1,82 @@
+[
+{
+    "model": "productos.imagenes",
+    "pk": 1,
+    "fields": {
+        "idProducto": 1,
+        "imagen": "images/214412_1.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 2,
+    "fields": {
+        "idProducto": 2,
+        "imagen": "images/51dRnWTaNkL._AC_.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 3,
+    "fields": {
+        "idProducto": 3,
+        "imagen": "images/81uEUkGrGRL._SL1500_.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 4,
+    "fields": {
+        "idProducto": 4,
+        "imagen": "images/A1xBokpzdQL._AC_SX425_.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 5,
+    "fields": {
+        "idProducto": 5,
+        "imagen": "images/FM4733REALHSHO-01_1500x.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 6,
+    "fields": {
+        "idProducto": 6,
+        "imagen": "images/57382620xlarge.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 7,
+    "fields": {
+        "idProducto": 7,
+        "imagen": "images/camiseta-lebron-james-los-angeles-lakers-blanca.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 8,
+    "fields": {
+        "idProducto": 8,
+        "imagen": "images/4906af40a99fb0dd08d7a7f3485ddb2c.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 9,
+    "fields": {
+        "idProducto": 9,
+        "imagen": "images/sadasdsadasd.jpg"
+    }
+},
+{
+    "model": "productos.imagenes",
+    "pk": 10,
+    "fields": {
+        "idProducto": 10,
+        "imagen": "images/10530943-1504726884876366.jpg"
+    }
+}
+]
