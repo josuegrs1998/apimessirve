@@ -8,6 +8,7 @@ ProductoSerializer, TallaSerializer, TallaProductoSerializer, TagProductoSeriali
 from rest_framework import permissions
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
+from django_filters import rest_framework as filters
 # Create your views here.
 
 class ListaCategoria(ListCreateAPIView):
@@ -92,6 +93,9 @@ class ListaProducto(ListCreateAPIView):
             queryset = queryset.filter(subcategorias__nombre=request.get('subcategorias'))
         if(request.get('marca')):
             queryset = queryset.filter(marca__nombre=request.get('marca'))
+        if(request.get('tags')):
+            queryset = queryset.filter(tags__nombre = request.get('tags'))
+
         return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
@@ -269,13 +273,34 @@ class DetalleEmpresa(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
         return Empresa.objects.all()
 
 #------------------------------------------EmpresaProducto---------------------------------------------#
+
+
+class GameFilter(filters.FilterSet):
+    precioBase = filters.RangeFilter(name = 'precioBase')
+
+    class Meta:
+        model = EmpresaProducto
+        fields = ['precioBase']
+
 class ListaEmpresaProducto(ListCreateAPIView):
     serializer_class = EmpresaProductoSerializer
     def perform_create(self, serializer):
         serializer.save()
+    
+    #if(request.get('marca')):
+            #queryset = queryset.filter(marca__nombre=request.get('marca'))
+
 
     def get_queryset(self):
-        return EmpresaProducto.objects.all()
+        request = self.request.GET
+       
+        #queryset =EmpresaProducto.objects.filter(precioBase__range = (5, 15.00)) 
+        queryset = EmpresaProducto.objects.all()
+        if(request.get('minimo')):
+          minimo = request.get('minimo') 
+          maximo = request.get('maximo')
+          queryset = EmpresaProducto.objects.filter(precioBase__range = (minimo, maximo))
+        return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('id', 'idEmpresa', 'idProducto')

@@ -10,6 +10,7 @@ class CategoriaSerializer(ModelSerializer):
 
 
 class SubcategoriaSerializer(ModelSerializer):
+    idCategoria = CategoriaSerializer()
 
     class Meta:
         model = Subcategoria
@@ -51,6 +52,8 @@ class EmpresaProductoSerializer(ModelSerializer):
         model = EmpresaProducto
         fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
 
+
+
 class OrdenSerializer(ModelSerializer):
 
     class Meta:
@@ -63,6 +66,21 @@ class Producto_OrdenSerializer(ModelSerializer):
         model = Producto_Orden
         fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total']
 
+
+class TagSerializer(ModelSerializer):
+    
+    class Meta:
+        model = Tags
+        fields =['id', 'nombre']
+
+class TagProductoSerializer(ModelSerializer):
+    idTag = TagSerializer()
+    
+
+    class Meta:
+        model = TagProducto
+        fields =['id', 'idTag', 'idProducto']
+
 class ProductoSerializer(ModelSerializer):
     subcategorias = SubcategoriaSerializer(many=True)
     marca = MarcaSerializer()
@@ -70,6 +88,8 @@ class ProductoSerializer(ModelSerializer):
     tallaproducto_set = TallaProductoSerializer(many=True)
     empresaproducto_set = EmpresaProductoSerializer(many=True)
     producto_orden_set = Producto_OrdenSerializer(many=True)
+    tagproducto_set = TagProductoSerializer(many=True)
+    tags = TagSerializer (many = True)
     class Meta:
         model = Producto
         fields = '__all__'
@@ -80,17 +100,6 @@ class SubcategoriaProductoSerializer(ModelSerializer):
         model = Subcategoria
         fields ='__all__'
 
-class TagSerializer(ModelSerializer):
-    
-    class Meta:
-        model = Tags
-        fields =['id', 'nombre']
-
-class TagProductoSerializer(ModelSerializer):
-
-    class Meta:
-        model = TagProducto
-        fields =['id', 'idTag', 'idProducto']
 
 class CuponSerializer(ModelSerializer):
 
