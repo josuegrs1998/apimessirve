@@ -294,9 +294,8 @@ class ListaEmpresaProducto(ListCreateAPIView):
     def get_queryset(self):
         request = self.request.GET
        
-        #queryset =EmpresaProducto.objects.filter(precioBase__range = (5, 15.00)) 
         queryset = EmpresaProducto.objects.all()
-        if(request.get('minimo')):
+        if(request.get('minimo')): # Ejemplo: http://127.0.0.1:8000/api/empresaproducto?minimo=10&maximo=30
           minimo = request.get('minimo') 
           maximo = request.get('maximo')
           queryset = EmpresaProducto.objects.filter(precioBase__range = (minimo, maximo))

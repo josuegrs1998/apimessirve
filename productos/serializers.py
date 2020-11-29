@@ -46,12 +46,19 @@ class EmpresaSerializer(ModelSerializer):
         model = Empresa
         fields = ['id', 'nombre', 'descripcion', 'telefono', 'correo', 'ruc']
 
+
+class ProductoSerializerT(ModelSerializer):
+    
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
 class EmpresaProductoSerializer(ModelSerializer):
     idEmpresa = EmpresaSerializer()
+    idProducto = ProductoSerializerT()
     class Meta:
         model = EmpresaProducto
         fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
-
 
 
 class OrdenSerializer(ModelSerializer):
