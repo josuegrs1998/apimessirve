@@ -15,8 +15,7 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         password = validated_data.pop('password')
         user = User(**validated_data)
-        enc_pass = make_password(password, salt=None, hasher='default')
-        user.set_password(enc_pass)
+        user.set_password(password)
         user.save()
         return user
 
