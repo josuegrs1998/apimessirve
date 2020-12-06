@@ -26,6 +26,11 @@ class Marca(models.Model):
     def __str__(self):
         return self.nombre
 
+class Tags(models.Model):
+    nombre = models.CharField(max_length=60)
+    def __str__(self):
+        return self.nombre
+
 class Producto(models.Model):
     nombre = models.CharField(max_length=60)
     codigoProducto = models.CharField(max_length=15)
@@ -35,15 +40,13 @@ class Producto(models.Model):
     exento = models.BooleanField()
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     subcategorias = models.ManyToManyField(Subcategoria)
+    tags = models.ManyToManyField(Tags)
 
     def __str__(self):
         return self.nombre
 
 
-class Tags(models.Model):
-    nombre = models.CharField(max_length=60)
-    def __str__(self):
-        return self.nombre
+
     
 class TagProducto(models.Model):
     idProducto = models.ForeignKey(Producto, on_delete=models.CASCADE)
@@ -87,6 +90,7 @@ class EmpresaProducto(models.Model):
     precioBase = models.DecimalField(max_digits=16, decimal_places=2)
 
     class Meta:
+       
         unique_together = ('idEmpresa', 'idProducto')
 
 class Cupon(models.Model):
