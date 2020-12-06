@@ -35,7 +35,7 @@
     "model": "productos.producto",
     "pk": 3,
     "fields": {
-        "nombre": "Balón de Futbol",
+        "nombre": "Balon de Futbol",
         "codigoProducto": "02020",
         "descripcion": "asdasd",
         "activo": true,
@@ -51,7 +51,7 @@
     "model": "productos.producto",
     "pk": 4,
     "fields": {
-        "nombre": "Balón de Basket",
+        "nombre": "Balon de Basket",
         "codigoProducto": "84848484",
         "descripcion": "asdsad",
         "activo": true,

@@ -88,13 +88,13 @@ class ListaProducto(ListCreateAPIView):
     def get_queryset(self):
         request = self.request.GET
         queryset = Producto.objects.all()
-        if(request.get('subcategorias')):
-            queryset = queryset.filter(subcategorias__nombre=request.get('subcategorias'))
+        if(request.get('subcategoria')):
+            queryset = queryset.filter(subcategorias__nombre=request.get('subcategoria'))
         if(request.get('marca')):
             queryset = queryset.filter(marca__nombre=request.get('marca'))
         return queryset
     
-    filter_backends = (DjangoFilterBackend, SearchFilter)
+    filter_backends = (DjangoFilterBackend, SearchFilter)   
     filter_fields = ('id', 'nombre','codigoProducto')
     search_fields = ('nombre', 'descripcion')
 
