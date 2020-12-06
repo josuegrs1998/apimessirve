@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import GenericAPIView , ListCreateAPIView, RetrieveUpdateDestroyAPIView
-from .serializers import LoginSerializer, UserSerializer
+from .serializers import LoginSerializer, UserSerializer, RegisterSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from django.conf import settings
@@ -17,7 +17,7 @@ User = get_user_model()
 
 class UserCreate(generics.CreateAPIView):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = RegisterSerializer
     permission_classes = (AllowAny, )
 
 
@@ -40,10 +40,10 @@ class DetalleUsuario(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
         return User.objects.all()
 
 class RegisterView(GenericAPIView):
-    serializer_class = LoginSerializer
+    serializer_class = RegisterSerializer
 
     def post(self,request):
-        serializer = LoginSerializer(data=request.data)
+        serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -56,6 +56,7 @@ class LoginView(GenericAPIView):
         email = data.get('email', '')
         password = data.get('password', '')
         user = auth.authenticate(email=email, password=password)
+        print(user)
 
         if user:
             auth_token= jwt.encode({
@@ -65,7 +66,7 @@ class LoginView(GenericAPIView):
                 'telefono':user.telefono,
                 'first_name':user.first_name,
                 'last_name': user.last_name,
-                'password': user.password
+                'password': user.password,
             }, settings.JWT_SECRET_KEY)
 
             serializer = LoginSerializer(user)
