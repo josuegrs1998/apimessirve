@@ -38,6 +38,6 @@ class LoginSerializer(serializers.ModelSerializer):
     orden_set = OrdenSerializer(many=True)
     class Meta:
         model = User
-        fields = ['email', 'first_name', 'password', 'orden_set', 'groups']
+        fields = ['email', 'first_name', 'password', 'orden_set']
         extra_kwargs = {'password': {'write_only': True}}
 

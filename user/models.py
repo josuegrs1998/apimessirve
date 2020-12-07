@@ -13,6 +13,7 @@ class CustomUser(AbstractUser):
     })
     telefono = models.CharField(null=True, max_length=20)
     direccion = models.JSONField(null=True)
+    empresa = models.ForeignKey('productos.Empresa', on_delete=models.CASCADE, null=True)
     #activate = models.JSONField(null=True)
     #reset_expiration = models.DateTimeField(null=True)
 #    is_active = models.BooleanField(
