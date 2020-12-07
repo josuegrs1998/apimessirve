@@ -144,3 +144,5 @@ class Producto_Orden(models.Model):
     total = models.DecimalField(max_digits=16, decimal_places=2)
     idEmpresa = models.ForeignKey(Empresa, on_delete= models.CASCADE, default='')
     estado = models.CharField(max_length=25, choices=ORDER_CHOICES, default='Carrito')
+    class Meta:
+        unique_together = ('idEmpresa', 'idProducto', 'idOrden')
