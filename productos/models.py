@@ -129,6 +129,7 @@ class Orden(models.Model):
     total = models.DecimalField(max_digits=16, decimal_places=2)
     fecha_ingreso = models.DateTimeField(default=now)
     fecha_entrega = models.DateTimeField(null=True)
+    direccion = models.JSONField(null=True)
     idcupon = models.ForeignKey(Cupon, null=True,on_delete = models.DO_NOTHING)
     idUsuario = models.ForeignKey(CustomUser,on_delete = models.CASCADE, default=1 )
   
