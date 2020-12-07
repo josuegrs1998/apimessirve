@@ -71,7 +71,7 @@ class Producto_OrdenSerializer(ModelSerializer):
 
     class Meta:
         model = Producto_Orden
-        fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total']
+        fields = ['id', 'idOrden', 'idProducto', 'precio', 'cantidad', 'iva', 'subtotal', 'total', 'idEmpresa']
 
 
 class TagSerializer(ModelSerializer):

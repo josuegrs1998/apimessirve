@@ -361,7 +361,7 @@ class ListaProducto_Orden(ListCreateAPIView):
         return Producto_Orden.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'idOrden', 'idProducto')
+    filter_fields = ('id', 'idOrden', 'idProducto', 'idEmpresa')
 
 class DetalleProducto_Orden(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = Producto_OrdenSerializer
