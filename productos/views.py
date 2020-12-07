@@ -342,7 +342,7 @@ class ListaOrden(ListCreateAPIView):
         return Orden.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
-    filter_fields = ('id', 'estado', 'no_Orden', 'idCliente')
+    filter_fields = ('id', 'estado', 'no_Orden', 'idUsuario')
 
 class DetalleOrden(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = OrdenSerializer
