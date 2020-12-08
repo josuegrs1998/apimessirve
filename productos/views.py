@@ -340,7 +340,7 @@ class ListaOrden(ListCreateAPIView):
 
     def get_queryset(self):
         request = self.request.GET
-        queryset = Producto.objects.all()
+        queryset = Orden.objects.all()
         if(request.get('exclude_estado')):
             queryset = queryset.exclude(estado=request.get('exclude_estado'))
         return queryset
