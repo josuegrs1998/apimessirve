@@ -339,7 +339,11 @@ class ListaOrden(ListCreateAPIView):
         serializer.save()
 
     def get_queryset(self):
-        return Orden.objects.all()
+        request = self.request.GET
+        queryset = Producto.objects.all()
+        if(request.get('exclude_estado')):
+            queryset = queryset.exclude(estado=request.get('exclude_estado'))
+        return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
     filter_fields = ('id', 'estado', 'no_Orden', 'idUsuario')
