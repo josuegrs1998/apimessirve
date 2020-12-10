@@ -19,6 +19,8 @@ class ListaCategoria(ListCreateAPIView):
         serializer.save()
         
     def get_queryset(self):
+        queryset = Categoria.objects.all()
+        print(queryset.query)
         return Categoria.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
@@ -31,6 +33,8 @@ class DetalleCategoria(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     lookup_field='id'
 
     def get_queryset(self):
+        queryset = Categoria.objects.all()
+        print(queryset.query)
         return Categoria.objects.all()
 
  #------------------------------------------------------------------------------------------------------#
@@ -97,7 +101,7 @@ class ListaProducto(ListCreateAPIView):
         if(request.get('tags')):
             queryset = queryset.filter(tags__nombre = request.get('tags'))
 
-        print(connection.queries)
+        print(queryset.query)
         return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)   
@@ -289,10 +293,7 @@ class ListaEmpresaProducto(ListCreateAPIView):
     def perform_create(self, serializer):
         serializer.save()
     
-    #if(request.get('marca')):
-            #queryset = queryset.filter(marca__nombre=request.get('marca'))
-
-
+ 
     def get_queryset(self):
         request = self.request.GET
        
@@ -301,6 +302,7 @@ class ListaEmpresaProducto(ListCreateAPIView):
           minimo = request.get('minimo') 
           maximo = request.get('maximo')
           queryset = EmpresaProducto.objects.filter(precioBase__range = (minimo, maximo))
+          print(queryset.query)
         return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
