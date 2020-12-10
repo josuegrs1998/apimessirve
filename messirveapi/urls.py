@@ -18,9 +18,9 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.sitemaps.views import sitemap
-from .sitemaps import ProductoSitemap
+from .sitemaps import ProductoSitemap, CategoriaSitemap
 
-sitemaps ={'producto' : ProductoSitemap}
+sitemaps ={'producto' : ProductoSitemap, 'categoria':CategoriaSitemap}
 
 urlpatterns = [
     path('admin/api/', admin.site.urls),
