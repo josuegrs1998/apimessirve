@@ -113,6 +113,10 @@ class ListaProducto(ListCreateAPIView):
             queryset = queryset.filter(tags__nombre = request.get('tags'))
         if(request.get('exclude_empresa')):
             queryset = queryset.exclude(empresaproducto__idEmpresa_id=request.get('exclude_empresa'))
+        if(request.get('minimo')): # Ejemplo: http://127.0.0.1:8000/api/producto?minimo=10&maximo=30
+            minimo = request.get('minimo') 
+            maximo = request.get('maximo')
+            queryset = queryset.filter(empresaproducto__precioBase__range = (minimo, maximo))
 
         print(queryset.query)
         return queryset
