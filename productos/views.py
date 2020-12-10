@@ -9,6 +9,7 @@ from rest_framework import permissions
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from django_filters import rest_framework as filters
+from django.db import connection
 # Create your views here.
 
 class ListaCategoria(ListCreateAPIView):
@@ -96,6 +97,7 @@ class ListaProducto(ListCreateAPIView):
         if(request.get('tags')):
             queryset = queryset.filter(tags__nombre = request.get('tags'))
 
+        print(connection.queries)
         return queryset
     
     filter_backends = (DjangoFilterBackend, SearchFilter)   
@@ -400,6 +402,7 @@ class ListaCliente(ListCreateAPIView):
         serializer.save()
 
     def get_queryset(self):
+        print(connection.queries)
         return Cliente.objects.all()
     
     filter_backends = (DjangoFilterBackend, SearchFilter)
@@ -411,3 +414,5 @@ class DetalleCliente(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
 
     def get_queryset(self):
         return Cliente.objects.all()
+
+
