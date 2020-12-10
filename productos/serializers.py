@@ -60,6 +60,10 @@ class EmpresaProductoSerializer(ModelSerializer):
         model = EmpresaProducto
         fields = ['id', 'idEmpresa', 'idProducto', 'cantidad', 'descuento', 'precioBase']
 
+class SimpleEmpresaProductoSerializer(ModelSerializer):
+    class Meta:
+        model = EmpresaProducto
+        fields = '__all__'
 
 class OrdenSerializer(ModelSerializer):
 
