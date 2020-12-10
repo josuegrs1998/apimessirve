@@ -45,6 +45,9 @@ class Producto(models.Model):
     def __str__(self):
         return self.nombre
 
+    def get_absolute_url(self):
+        return '/%s/%s/' % ( self.nombre, self.codigoProducto)
+
 
 
     
