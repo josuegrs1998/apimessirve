@@ -101,6 +101,11 @@ class ProductoSerializer(ModelSerializer):
         model = Producto
         fields = '__all__'
 
+class SimpleProductoSerializer(ModelSerializer):
+    class Meta:
+        model = Producto
+        fields = '__all__'
+
 class SubcategoriaProductoSerializer(ModelSerializer):
     producto_set = ProductoSerializer(many=True)
     class Meta:

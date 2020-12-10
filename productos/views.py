@@ -4,7 +4,7 @@ from .models import (Categoria, Cupon, EmpresaProducto, Empresa, Orden  ,
 Subcategoria, Marca, Producto, TagProducto, Tags, Imagenes, TallaProducto, Talla, Producto_Orden, Login, Cliente)
 from .serializers import (CategoriaSerializer, SubcategoriaSerializer, MarcaSerializer, SubcategoriaProductoSerializer,
 ProductoSerializer, TallaSerializer, TallaProductoSerializer, TagProductoSerializer, TagSerializer,EmpresaSerializer 
-, ImagenesSerializer, EmpresaProductoSerializer, CuponSerializer, OrdenSerializer, Producto_OrdenSerializer, LoginSerializer, ClienteSerializer)
+, ImagenesSerializer, EmpresaProductoSerializer, CuponSerializer, OrdenSerializer, Producto_OrdenSerializer, LoginSerializer, ClienteSerializer, SimpleProductoSerializer)
 from rest_framework import permissions
 from rest_framework.filters import SearchFilter
 from django_filters.rest_framework import DjangoFilterBackend
@@ -85,6 +85,13 @@ class ListaProducto(ListCreateAPIView):
     #permission_classes =(permissions.IsAuthenticated,)
     def perform_create(self, serializer):
         serializer.save()
+    def post(self, request, *args, **kwargs):
+        serializer = SimpleProductoSerializer(data=request.data)
+        if serializer.is_valid():
+            producto = serializer.save()
+            serializer = SimpleProductoSerializer(producto)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
         request = self.request.GET
@@ -107,6 +114,14 @@ class DetalleProducto(RetrieveUpdateDestroyAPIView): #Para buscar 1 editar 1
     serializer_class = ProductoSerializer
    # permission_classes =(permissions.IsAuthenticated,)
     lookup_field='id'
+
+    def patch(self, request, *args, **kwargs):
+        producto = get_object_or_404(Producto, pk=kwargs['producto_id'])
+        serializer = SimpleProductoSerializer(question, data=request.data, partial=True)
+        if serializer.is_valid():
+            producto = serializer.save()
+            return Response(SimpleProductoSerializer(producto).data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def get_queryset(self):
         return Producto.objects.all()
