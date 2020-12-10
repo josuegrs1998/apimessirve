@@ -37,7 +37,7 @@ class Producto(models.Model):
     descripcion = models.CharField(max_length=120)
     activo = models.BooleanField(default=True)
     tipoMaterial = models.CharField(max_length=30)
-    exento = models.BooleanField()
+    exento = models.BooleanField(default=True)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     subcategorias = models.ManyToManyField(Subcategoria)
     tags = models.ManyToManyField(Tags)
