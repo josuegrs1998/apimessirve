@@ -40,7 +40,7 @@ class Producto(models.Model):
     exento = models.BooleanField(default=True)
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     subcategorias = models.ManyToManyField(Subcategoria)
-    tags = models.ManyToManyField(Tags)
+    tags = models.ManyToManyField(Tags, null=True)
 
     def __str__(self):
         return self.nombre
