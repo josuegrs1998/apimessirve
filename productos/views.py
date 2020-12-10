@@ -107,6 +107,8 @@ class ListaProducto(ListCreateAPIView):
             queryset = queryset.filter(marca__nombre=request.get('marca'))
         if(request.get('tags')):
             queryset = queryset.filter(tags__nombre = request.get('tags'))
+        if(request.get('exclude_empresa')):
+            queryset = queryset.exclude(empresaproducto__idEmpresa_id=request.get('exclude_empresa'))
 
         print(queryset.query)
         return queryset

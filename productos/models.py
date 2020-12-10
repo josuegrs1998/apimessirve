@@ -35,7 +35,7 @@ class Producto(models.Model):
     nombre = models.CharField(max_length=60)
     codigoProducto = models.CharField(max_length=15)
     descripcion = models.CharField(max_length=120)
-    activo = models.BooleanField()
+    activo = models.BooleanField(default=True)
     tipoMaterial = models.CharField(max_length=30)
     exento = models.BooleanField()
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
